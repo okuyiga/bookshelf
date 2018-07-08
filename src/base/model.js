@@ -1,6 +1,6 @@
 // Base Model
 // ---------------
-import _, { assign, identity, mapKeys, mapValues, clone } from 'lodash';
+import _, { assign, identity, mapKeys, mapValues, clone, cloneDeep } from 'lodash';
 import {deprecate} from '../helpers';
 import inherits from 'inherits';
 import Events from './events';
@@ -719,7 +719,7 @@ ModelBase.prototype.previousAttributes = function() {
  * @returns {Model} This model.
  */
 ModelBase.prototype._reset = function() {
-  this._previousAttributes = clone(this.attributes);
+  this._previousAttributes = cloneDeep(this.attributes);
   this.changed = Object.create(null);
   return this;
 };
